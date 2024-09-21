@@ -1,5 +1,6 @@
 package net.hwyz.iov.cloud.tsp.umr.service.infrastructure.repository;
 
+import cn.hutool.core.lang.TypeReference;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -64,6 +65,35 @@ public class MpMsgTemplateRepositoryImpl extends AbstractRepository<Long, MpMsgT
                         .build();
                 msgTemplateDao.insertPo(msgTemplatePo);
             }
+            case CHANGED -> {
+                Map<String, Object> config = new HashMap<>();
+                String msgTitle = null;
+                if (mpMsgTemplateDo.getNotification() != null) {
+                    config.put("isNotification", true);
+                    msgTitle = mpMsgTemplateDo.getNotification().getAlert();
+                } else if (mpMsgTemplateDo.getMessage() != null) {
+                    config.put("isMessage", true);
+                    msgTitle = mpMsgTemplateDo.getMessage().getTitle();
+                }
+                String msgContent = null;
+                if (mpMsgTemplateDo.getMessage() != null) {
+                    config.put("isMessage", true);
+                    msgContent = mpMsgTemplateDo.getMessage().getMsgContent();
+                    if (mpMsgTemplateDo.getMessage().getExtras() != null) {
+                        config.put("extras", mpMsgTemplateDo.getMessage().getExtras());
+                    }
+                }
+                MsgTemplatePo msgTemplatePo = MsgTemplatePo.builder()
+                        .id(mpMsgTemplateDo.getId())
+                        .name(mpMsgTemplateDo.getName())
+                        .code(mpMsgTemplateDo.getCode())
+                        .type(ClientType.MP.name())
+                        .msgTitle(msgTitle)
+                        .msgContent(msgContent)
+                        .msgConfig(JSONUtil.toJsonStr(config))
+                        .build();
+                msgTemplateDao.updatePo(msgTemplatePo);
+            }
             default -> {
                 return false;
             }
@@ -92,9 +122,15 @@ public class MpMsgTemplateRepositoryImpl extends AbstractRepository<Long, MpMsgT
         }
         MessageVo message = null;
         if (jsonObject.containsKey("isMessage") && jsonObject.getBool("isMessage")) {
+            Map<String, Object> extras = null;
+            if (jsonObject.containsKey("extras")) {
+                extras = jsonObject.getJSONObject("extras").toBean(new TypeReference<>() {
+                });
+            }
             message = MessageVo.builder()
                     .title(msgTemplatePo.getMsgTitle())
                     .msgContent(msgTemplatePo.getMsgContent())
+                    .extras(extras)
                     .build();
         }
         MpMsgTemplateDo mpMsgTemplateDo = MpMsgTemplateDo.builder()

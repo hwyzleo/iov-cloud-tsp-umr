@@ -28,7 +28,7 @@ public class PushServiceController implements PushServiceApi {
     @PostMapping("/singleMobile")
     public void pushMobile(@RequestBody @Valid SingleMobilePushRequest request) {
         logger.info("向账号[{}]手机推送消息模板[{}]", request.getAccountId(), request.getMsgTemplateCode());
-        pushAppService.pushSingleMobile(request.getAccountId(), request.getMsgTemplateCode());
+        pushAppService.pushSingleMobile(request.getAccountId(), request.getMsgTemplateCode(), request.getExtras());
     }
 
 }

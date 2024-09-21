@@ -27,6 +27,6 @@ public class PushRequest {
     /**
      * 模板参数变量
      */
-    private Map<String, Object> params;
+    private Map<String, Object> extras;
 
 }

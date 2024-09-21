@@ -1,5 +1,6 @@
 package net.hwyz.iov.cloud.tsp.umr.service.domain.template.model;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +44,18 @@ public class MpMsgTemplateDo extends BaseDo<Long> implements DomainObj<MpMsgTemp
 
     public void init() {
         stateInit();
+    }
+
+    /**
+     * 更新模板名称
+     *
+     * @param name 模板名称
+     */
+    public void updateName(String name) {
+        if (StrUtil.isNotBlank(name) && !name.equals(this.name)) {
+            this.name = name;
+            stateChange();
+        }
     }
 
 }
