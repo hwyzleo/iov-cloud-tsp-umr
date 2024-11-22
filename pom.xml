@@ -16,9 +16,4 @@
     <description>统一消息触达</description>
     <name>umr</name>
 
-    <properties>
-        <umr.version>0.0.1-SNAPSHOT</umr.version>
-        <account.version>0.0.1-SNAPSHOT</account.version>
-    </properties>
-
 </project>
