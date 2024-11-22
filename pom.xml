@@ -10,12 +10,7 @@
         <module>umr-service</module>
     </modules>
 
-    <parent>
-        <groupId>net.hwyz.iov.cloud.tsp</groupId>
-        <artifactId>service-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-
+    <groupId>net.hwyz.iov.cloud.tsp</groupId>
     <artifactId>umr</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>统一消息触达</description>
