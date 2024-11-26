@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>net.hwyz.iov.cloud.tsp</groupId>
-        <artifactId>api-parent</artifactId>
+        <groupId>net.hwyz.iov.cloud.parent</groupId>
+        <artifactId>api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
+    <groupId>net.hwyz.iov.cloud.tsp</groupId>
     <artifactId>umr-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -29,5 +30,18 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-snapshots</id>
+            <url>http://nexus-internal.rox-motor.com:8081/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

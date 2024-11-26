@@ -4,9 +4,9 @@ import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.DomainObj;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.Os;
+import net.hwyz.iov.cloud.framework.common.domain.BaseDo;
+import net.hwyz.iov.cloud.framework.common.domain.DomainObj;
+import net.hwyz.iov.cloud.framework.common.enums.Os;
 
 import java.util.Set;
 

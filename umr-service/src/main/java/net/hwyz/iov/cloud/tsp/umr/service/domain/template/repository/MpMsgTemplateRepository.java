@@ -1,6 +1,6 @@
 package net.hwyz.iov.cloud.tsp.umr.service.domain.template.repository;
 
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseRepository;
+import net.hwyz.iov.cloud.framework.common.domain.BaseRepository;
 import net.hwyz.iov.cloud.tsp.umr.service.domain.template.model.MpMsgTemplateDo;
 
 import java.util.Optional;
